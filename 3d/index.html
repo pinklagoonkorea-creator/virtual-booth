@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pink Lagoon Virtual Booth 3D (prototype)</title>
+<style>html,body{margin:0;height:100%;background:#9fd0ea}#b{height:100vh;--plb-radius:0px}</style>
+</head>
+<body>
+<div id="b"></div>
+<script type="module">
+import { mount } from './embed.js';
+const q = new URLSearchParams(location.search);
+window.booth = await mount(document.getElementById('b'), { capture: q.has('capture'), manual: q.has('capture'), pixelRatio: +q.get('pr') || undefined, hud: q.get('hud') !== '0', view: q.get('view') || undefined });
+window.ready = true;
+</script>
+</body>
+</html>
