@@ -193,10 +193,14 @@ export function createBooth(canvas, opts = {}) {
   const VIEWS = { all: { pos: [11, 6.4, 31], look: [0.2, 4.4, 0] }, f1: { pos: [2.5, 3.6, 18.5], look: [0, 1.9, 1.5] }, f2: { pos: [-2.5, 7.6, 15.5], look: [0, 5.0, 0] }, close: { pos: [-1.6, 2.7, 8.6], look: [-4.0, 1.55, 1.4] } };
   let cur = { pos: new THREE.Vector3(...VIEWS.all.pos), look: new THREE.Vector3(...VIEWS.all.look) }, target = { pos: cur.pos.clone(), look: cur.look.clone() }, orbit = { x: 0, y: 0 };
   const api = { VIEWS, goto(name, instant) { const v = VIEWS[name]; target.pos.set(...v.pos); target.look.set(...v.look); if (instant) { cur.pos.copy(target.pos); cur.look.copy(target.look); } }, renderer, scene, camera,
-    resize() { const w = canvas.clientWidth, h = canvas.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.fov = w / h < 1 ? 46 : 30; camera.updateProjectionMatrix(); },
-    frame(t) { anim.forEach((f) => f(t)); cur.pos.lerp(target.pos, .06); cur.look.lerp(target.look, .06); camera.position.copy(cur.pos).add(new THREE.Vector3(orbit.x * 5 + Math.sin(t * .15) * .5, orbit.y * 2.2, 0)); camera.lookAt(cur.look); renderer.render(scene, camera); } };
+    resize() { const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); camera.aspect = w / h; camera.fov = w / h < 1 ? 46 : 30; camera.updateProjectionMatrix(); },
+    frame(t) { anim.forEach((f) => f(t)); const k = 1 - Math.exp(-Math.min(Math.max(t - (api._t ?? t), 0), .25) * 3.6); api._t = t; cur.pos.lerp(target.pos, k); cur.look.lerp(target.look, k); /* 화면 속도와 상관없이 같은 시간에 도착한다 */ camera.position.copy(cur.pos).add(new THREE.Vector3(orbit.x * 5 + Math.sin(t * .15) * .5, orbit.y * 2.2, 0)); camera.lookAt(cur.look); renderer.render(scene, camera); if (api.onFrame) api.onFrame(t); },
+    // 3D 위치 → 캔버스 안의 화면 좌표(px). 화면 밖이거나 카메라 뒤면 visible=false
+    project(x, y, z) { const v = new THREE.Vector3(x, y, z).project(camera), w = canvas.clientWidth, h = canvas.clientHeight; return { x: (v.x * .5 + .5) * w, y: (-v.y * .5 + .5) * h, visible: v.z < 1 && Math.abs(v.x) < 1.02 && Math.abs(v.y) < 1.02 }; } };
   canvas.addEventListener('pointermove', (e) => { const r = canvas.getBoundingClientRect(); orbit.x = (e.clientX - r.left) / r.width - .5; orbit.y = .5 - (e.clientY - r.top) / r.height; });
   api.resize(); window.addEventListener('resize', api.resize);
-  if (!opts.manual) { const t0 = performance.now(); let seen = true; if (window.IntersectionObserver) new IntersectionObserver((e) => { seen = e[0].isIntersecting; }).observe(canvas); const loop = () => { if (seen && !document.hidden) api.frame((performance.now() - t0) / 1000); requestAnimationFrame(loop); }; loop(); }
+  if (!opts.manual) { const t0 = performance.now(); let sw = 0, sh = 0;
+    const onScreen = () => { const r = canvas.getBoundingClientRect(); return r.width > 0 && r.bottom > 0 && r.top < window.innerHeight; };   // 붙어 있고 화면 안에 있을 때만 그린다
+    const loop = () => { if (canvas.isConnected && !document.hidden && onScreen()) { if (canvas.clientWidth !== sw || canvas.clientHeight !== sh) { sw = canvas.clientWidth; sh = canvas.clientHeight; api.resize(); } api.frame((performance.now() - t0) / 1000); } requestAnimationFrame(loop); }; loop(); }
   return api;
 }

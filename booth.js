@@ -1,4 +1,4 @@
-/* Pink Lagoon 가상 부스 — 2D 이미지를 CSS 3D 공간에 세운 전시 부스.
+/* Pink Lagoon 가상 부스 — 3D 수산 시장 부스(3d/scene.js) 위에 제품 카드·1차 판정·문의 양식을 얹는다. 3D를 못 쓰는 기기는 목록 보기.
    붙이는 법은 README.md 참고. 외부 라이브러리 없음. Shadow DOM 안에 그려서 홈페이지 스타일과 섞이지 않는다.
    설정(스크립트 태그의 data-* 또는 PinkLagoonBooth.mount(el, opts)):
      base      : 이 폴더의 주소(끝에 /). 기본값은 booth.js가 있는 곳
@@ -13,7 +13,7 @@
     en: {
       gate_title: 'Welcome to the Pink Lagoon Virtual Booth', gate_sub: 'Tell us where you import to. We will show a preliminary import check for each product.',
       gate_pick: 'Select your import country', gate_go: 'Enter the booth', change: 'Change',
-      importing: 'Importing to', hint: 'Drag to look around · Tap a product', list: 'List view', booth: 'Booth view',
+      importing: 'Importing to', hint: 'Tap a counter to see products', list: 'List view', booth: 'Booth view',
       v_ok: 'Preliminary check: OK', v_cond: 'Conditions apply', v_check: 'To be confirmed', v_no: 'Not available now',
       m_ok: 'Based on our preliminary check, this product can be imported into {c}. Final specifications, documents and labelling are confirmed per order.',
       m_cond: 'Import into {c} is possible when certain conditions are met (for example facility registration, permits, labelling or formulation). We will confirm what applies to your order.',
@@ -28,12 +28,16 @@
       sent_title: 'Thank you.', sent_body: 'Your inquiry has been received. We will reply to {e} shortly.',
       mail_title: 'One more step', mail_body: 'Your email program has been opened with the inquiry filled in. Please press send. If nothing opened, copy the text below and email it to {m}.',
       copy: 'Copy text', copied: 'Copied', err: 'Sending failed. Please email us at {m}.', req: 'Please fill in name, company and a valid email, and tick the consent box.',
+      fl_all: 'Whole booth', fl_1: '1F · Products', fl_2: '2F · Lounge', sp_tasting: 'Request samples', sp_lounge: '2F Lounge', loading3d: 'Opening the booth…',
+      quest: 'YOUR VISIT', q_country: 'Choose your import country', q_view: 'Look at 3 products ({n}/3)', q_ask: 'Request samples or send an inquiry',
+      staff: 'Mina · Booth staff', talk: 'Welcome! Tap a counter to see what we can ship to {c}. Each product shows a preliminary import check.', talk0: 'Welcome to the Pink Lagoon booth!',
+      zone_sub: 'Preliminary import check for {c} is shown on each product.', sample_title: 'Request samples', sample_msg: 'Sample request: ',
       desk: 'Inquiry Desk', close: 'Close', tagline: 'Premium Seafood from Korea', prev: 'Previous wall', next: 'Next wall'
     },
     ko: {
       gate_title: '핑크라군 가상 부스에 오신 것을 환영합니다', gate_sub: '수입하실 국가를 알려주세요. 제품별 1차 수입 가능 여부를 함께 보여드립니다.',
       gate_pick: '수입 희망 국가 선택', gate_go: '부스 입장', change: '변경',
-      importing: '수입 국가', hint: '끌어서 둘러보기 · 제품을 눌러 보세요', list: '목록 보기', booth: '부스 보기',
+      importing: '수입 국가', hint: '진열대를 눌러 제품을 보세요', list: '목록 보기', booth: '부스 보기',
       v_ok: '1차 확인: 가능', v_cond: '조건부 가능', v_check: '확인 필요', v_no: '현재 불가',
       m_ok: '수입 국가 {c} 기준, 1차 확인 결과 수입이 가능한 품목입니다. 최종 규격·서류·라벨은 주문별로 확정합니다.',
       m_cond: '수입 국가 {c} 기준, 일정 조건(시설 등록, 허가, 라벨, 배합 등)을 충족하면 수입이 가능합니다. 주문에 해당하는 조건을 확인해 드립니다.',
@@ -48,6 +52,10 @@
       sent_title: '감사합니다.', sent_body: '문의가 접수되었습니다. {e} 주소로 곧 회신드리겠습니다.',
       mail_title: '한 단계 남았습니다', mail_body: '문의 내용이 채워진 메일 창을 열었습니다. 보내기를 눌러 주세요. 창이 열리지 않았다면 아래 내용을 복사해 {m} 주소로 보내 주세요.',
       copy: '내용 복사', copied: '복사됨', err: '전송에 실패했습니다. {m} 주소로 메일 주세요.', req: '이름, 회사명, 올바른 이메일을 입력하고 동의란에 체크해 주세요.',
+      fl_all: '부스 전체', fl_1: '1층 · 제품', fl_2: '2층 · 라운지', sp_tasting: '샘플 요청', sp_lounge: '2층 라운지', loading3d: '부스를 여는 중…',
+      quest: '방문 안내', q_country: '수입 국가 고르기', q_view: '제품 3개 살펴보기 ({n}/3)', q_ask: '샘플 요청 또는 문의 남기기',
+      staff: 'Mina · 부스 직원', talk: '어서 오세요! 진열대를 누르면 {c} 기준으로 보낼 수 있는 제품을 보여드려요. 제품마다 1차 수입 가능 여부가 표시됩니다.', talk0: '핑크라군 부스에 오신 것을 환영합니다!',
+      zone_sub: '제품마다 {c} 기준 1차 수입 가능 여부가 표시됩니다.', sample_title: '샘플 요청', sample_msg: '샘플 요청: ',
       desk: '문의 데스크', close: '닫기', tagline: 'Premium Seafood from Korea', prev: '이전 벽', next: '다음 벽'
     }
   };
@@ -90,25 +98,68 @@
     }).catch(function (e) { app.textContent = 'Booth failed to load: ' + e.message; });
 
     /* ───────── 그리기 ───────── */
-    var world, worldBg, yaw = 0, pitch = 0, drag = null, dx = 0, dy = 0, px = 0, py = 0, raf = 0, moved = false;
-    var WALLS = ['left', 'back', 'right'], YAW = { left: -62, back: 0, right: 62 };
+    // 부스 보기는 3D 장면(3d/scene.js, Three.js)이다. 장면은 한 번만 만들고, 화면을 다시 그릴 때는 같은 캔버스를 다시 붙인다.
+    // 3D를 못 쓰는 기기(WebGL 없음, 불러오기 실패)는 목록 보기로 넘어간다.
+    var three = null;
+    var SPOTS = [
+      { id: 'shellfish', zone: 'shellfish', at: [-4, 2.35, 1.7], view: 'f1' }, { id: 'crabfish', zone: 'crabfish', at: [0, 2.55, 1.6], view: 'f1' }, { id: 'seaweed', zone: 'seaweed', at: [4, 2.9, 1.6], view: 'f1' },
+      { id: 'desk', at: [-5.6, 2.75, 5.4], label: 'desk' }, { id: 'tasting', at: [4.0, 1.75, 6.2], label: 'sp_tasting' }, { id: 'lounge', at: [0, 6.05, 0.3], label: 'sp_lounge', view: 'f2' }
+    ];
     function render() {
-      app.innerHTML = ''; app.lang = S.lang;
+      app.innerHTML = ''; app.lang = S.lang; app.classList.toggle('is3d', S.view === 'booth');
       app.appendChild(topbar());
       var stage = h('div', { class: 'stage' }); app.appendChild(stage);
-      if (S.view === 'booth') stage.appendChild(scene()); else stage.appendChild(listView());
-      if (S.view === 'booth') {
-        stage.appendChild(h('button', { class: 'nav prev', 'aria-label': t('prev'), onclick: function () { turn(-1); } }, ['‹']));
-        stage.appendChild(h('button', { class: 'nav next', 'aria-label': t('next'), onclick: function () { turn(1); } }, ['›']));
-        stage.appendChild(h('div', { class: 'dots' }, WALLS.map(function (w, i) { return h('button', { class: 'dot' + (i === S.wall ? ' on' : ''), 'aria-label': zoneOf(w), onclick: function () { S.wall = i; aim(); syncDots(); } }, [h('span', { text: zoneOf(w) })]); })));
-        stage.appendChild(h('div', { class: 'hint', text: t('hint') }));
-      }
+      if (S.view === 'booth') { stage.appendChild(stage3d()); stage.appendChild(hud()); } else stage.appendChild(listView());
       if (!S.country) app.appendChild(gate());
-      fit(); aim(true);
     }
-    function zoneOf(w) { var z = S.data.zones.filter(function (z) { return z.wall === w; })[0]; return z ? L(z) : ''; }
-    function syncDots() { [].forEach.call(app.querySelectorAll('.dot'), function (d, i) { d.classList.toggle('on', i === S.wall); }); }
-    function turn(d) { S.wall = Math.max(0, Math.min(2, S.wall + d)); aim(); syncDots(); }
+    function zoneOf(id) { var z = S.data.zones.filter(function (z) { return z.id === id; })[0]; return z ? L(z) : ''; }
+    function no3d() { S.no3d = true; S.view = 'list'; three = null; render(); }
+    function stage3d() {
+      if (three) { if (three.api) three.api.resize(); return three.el; }
+      var canvas = h('canvas', { class: 'gl' }), el = h('div', { class: 'three' }, [canvas, h('div', { class: 'loading', text: t('loading3d') })]);
+      three = { el: el, api: null, view: 'all' };
+      var probe = document.createElement('canvas'), ok = false; try { ok = !!(probe.getContext('webgl2') || probe.getContext('webgl')); } catch (e) {}
+      if (!ok) { setTimeout(no3d, 0); return el; }
+      var mine = three;
+      import(base + '3d/scene.js').then(function (m) {
+        return (document.fonts && document.fonts.load ? document.fonts.load("600 40px 'PLB Poppins'") : Promise.resolve()).catch(function () {}).then(function () {
+          if (three !== mine) return;
+          mine.api = m.createBooth(canvas, { font: "'PLB Poppins'" }); el.classList.add('ready');
+          if (window.ResizeObserver) new ResizeObserver(function () { mine.api.resize(); }).observe(el);
+          mine.api.onFrame = place; mine.api.goto(mine.view, true);
+        });
+      }).catch(function () { if (three === mine) no3d(); });
+      return el;
+    }
+    function goView(v) { if (!three) return; three.view = v; if (three.api) three.api.goto(v); var hd = app.querySelector('.hud'); if (hd) hd.setAttribute('data-view', v); [].forEach.call(app.querySelectorAll('.floors button'), function (b) { b.classList.toggle('on', b.getAttribute('data-v') === v); }); }
+    function place() {                                                  // 3D 위치를 화면 좌표로 바꿔 단추를 그 자리에 둔다
+      if (!three || !three.api) return;
+      [].forEach.call(app.querySelectorAll('.spot'), function (b) {
+        var a = b._at, q = three.api.project(a[0], a[1], a[2]);
+        b.style.transform = 'translate(' + q.x.toFixed(1) + 'px,' + q.y.toFixed(1) + 'px) translate(-50%,-100%)'; b.style.opacity = q.visible ? 1 : 0; b.style.pointerEvents = q.visible ? '' : 'none';
+      });
+    }
+    function hud() {
+      var spots = SPOTS.map(function (sp) {
+        var b = h('button', { class: 'spot' + (sp.zone ? '' : ' act') }, [h('i'), h('span', { text: sp.zone ? zoneOf(sp.zone) : t(sp.label) })]); b._at = sp.at;
+        b.addEventListener('click', function () {
+          if (sp.zone) { goView(sp.view); openZone(sp.zone); } else if (sp.id === 'lounge') goView('f2'); else if (sp.id === 'tasting') openForm('sample'); else openForm();
+        });
+        return b;
+      });
+      var seen = Object.keys(S.viewed || {}).length, q3 = S.sent || S.cart.length > 0, donePct = ((S.country ? 1 : 0) + Math.min(seen, 3) / 3 + (q3 ? 1 : 0)) / 3 * 100;
+      var q = function (ok, text) { return h('p', { class: ok ? 'ok' : '' }, [h('i', { text: ok ? '✓' : '' }), text]); };
+      return h('div', { class: 'hud', 'data-view': (three && three.view) || 'all' }, [
+        h('div', { class: 'spots' }, spots),
+        h('div', { class: 'floors' }, [['all', 'fl_all'], ['f1', 'fl_1'], ['f2', 'fl_2']].map(function (f) { return h('button', { class: 'pcard' + ((three && three.view) === f[0] ? ' on' : ''), 'data-v': f[0], onclick: function () { goView(f[0]); }, text: t(f[1]) }); })),
+        h('div', { class: 'pcard quest' }, [h('h4', { text: t('quest') }), q(!!S.country, t('q_country') + (S.country ? ' (' + cName() + ')' : '')), q(seen >= 3, t('q_view', { n: Math.min(seen, 3) })), q(q3, t('q_ask')), h('div', { class: 'pg' }, [h('i', { style: 'width:' + donePct.toFixed(0) + '%' })])]),
+        h('div', { class: 'pcard talk' }, [h('div', { class: 'face' }), h('div', {}, [h('b', { text: t('staff') }), h('p', { text: S.country ? t('talk', { c: cName() }) : t('talk0') })])])
+      ]);
+    }
+    function openZone(zid) {
+      var ps = S.data.products.filter(function (p) { return p.zone === zid; });
+      veil(h('div', { class: 'panel zonep' }, [h('h2', { text: zoneOf(zid) }), S.country ? h('p', { text: t('zone_sub', { c: cName() }) }) : null, h('div', { class: 'lgrid' }, ps.map(card))]), 'side');
+    }
 
     function topbar() {
       var n = S.cart.length;
@@ -116,66 +167,23 @@
         h('div', { class: 'brand' }, [h('img', { src: base + 'assets/logo-mark.png', alt: '' }), h('div', {}, [h('b', { text: 'PINK LAGOON' }), h('small', { text: 'Global · International' })])]),
         h('div', { class: 'tools' }, [
           S.country ? h('button', { class: 'chip', onclick: function () { S.country = null; render(); } }, [h('small', { text: t('importing') }), h('b', { text: cName() }), h('i', { text: t('change') })]) : null,
-          h('button', { class: 'ghost', onclick: function () { S.view = S.view === 'booth' ? 'list' : 'booth'; render(); }, text: S.view === 'booth' ? t('list') : t('booth') }),
+          S.no3d ? null : h('button', { class: 'ghost', onclick: function () { S.view = S.view === 'booth' ? 'list' : 'booth'; render(); }, text: S.view === 'booth' ? t('list') : t('booth') }),
           h('button', { class: 'ghost lang', onclick: function () { S.lang = S.lang === 'en' ? 'ko' : 'en'; render(); }, text: S.lang === 'en' ? '한국어' : 'English' }),
           h('button', { class: 'cta', onclick: openForm, text: n ? t('inquiry_n', { n: n }) : t('inquiry') })
         ])
       ]);
     }
 
+
     function card(p) {
       var v = verdict(p.id), inCart = S.cart.indexOf(p.id) >= 0;
       var pic = (p.photo || (opts.photos && opts.photos[p.id])) ? h('img', { src: photo(p.id), alt: L(p), loading: 'lazy', draggable: 'false' })
         : h('div', { class: 'noimg' }, [h('b', { text: L(p) }), h('small', { text: t('photo_soon') })]);
-      return h('button', { class: 'card' + (inCart ? ' in' : ''), 'data-id': p.id, onclick: function () { if (!moved) openProduct(p); } }, [
+      return h('button', { class: 'card' + (inCart ? ' in' : ''), 'data-id': p.id, onclick: function () { openProduct(p); } }, [
         h('span', { class: 'pic' }, [pic, p.brand === 'stellamaris' ? h('img', { class: 'sm', src: base + 'assets/stellamaris-logo.png', alt: 'Stella Maris' }) : null, p.sourcing ? h('em', { text: t('sourcing') }) : null]),
         h('span', { class: 'cap' }, [h('b', { text: L(p) }), S.country ? h('i', { class: 'v ' + v.v, text: t('v_' + v.v) }) : null])
       ]);
     }
-    function wall(name) {
-      var z = S.data.zones.filter(function (z) { return z.wall === name; })[0], ps = S.data.products.filter(function (p) { return z && p.zone === z.id; });
-      var cols = Math.max(2, Math.ceil(ps.length / 2));
-      return h('div', { class: 'wall ' + name }, [
-        h('div', { class: 'zone', text: z ? L(z) : '' }),
-        h('div', { class: 'grid', style: '--cols:' + cols }, ps.map(card))
-      ]);
-    }
-    function scene() {
-      world = h('div', { class: 'world' }, [
-        wall('back'), wall('left'), wall('right'),
-        h('div', { class: 'sign' }, [h('img', { src: base + 'assets/logo-mark.png', alt: '' }), h('div', {}, [h('b', { text: 'PINK LAGOON' }), h('span', { text: t('tagline') })])]),
-        h('button', { class: 'desk', onclick: function () { if (!moved) openForm(); } }, [h('b', { text: t('desk') }), h('span', { text: email })])
-      ]);
-      worldBg = h('div', { class: 'world' }, [h('div', { class: 'floor' }), h('div', { class: 'ceil' })]);   // 바닥·천장은 따로 둔다(벽과 한 공간에 두면 크롬이 잘못 가린다)
-      var sc = h('div', { class: 'scene' }, [h('div', { class: 'cam' }, [worldBg, world])]);
-      sc.addEventListener('pointerdown', function (e) { drag = { x: e.clientX, y: e.clientY }; moved = false; });
-      sc.addEventListener('pointermove', function (e) {
-        var r = sc.getBoundingClientRect(); px = (e.clientX - r.left) / r.width - .5; py = (e.clientY - r.top) / r.height - .5;
-        if (drag) { dx = (e.clientX - drag.x) * .18; dy = (e.clientY - drag.y) * .05; if (Math.abs(e.clientX - drag.x) > 6) moved = true; }
-        aim();
-      });
-      var up = function () {
-        if (drag && Math.abs(dx) > 14) { S.wall = Math.max(0, Math.min(2, S.wall + (dx > 0 ? -1 : 1))); syncDots(); }
-        drag = null; dx = dy = 0; aim(); setTimeout(function () { moved = false; }, 0);
-      };
-      sc.addEventListener('pointerup', up); sc.addEventListener('pointerleave', function () { px = py = 0; if (drag) up(); else aim(); });
-      return sc;
-    }
-    function aim(now) {
-      if (!world) return;
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(function () {
-        yaw = YAW[WALLS[S.wall]] + dx + px * 9; pitch = -py * 5 - dy;
-        var tf = 'translateZ(' + (S.wall === 1 ? -80 : 120) + 'px) rotateX(' + pitch.toFixed(2) + 'deg) rotateY(' + yaw.toFixed(2) + 'deg)';
-        [world, worldBg].forEach(function (w) { w.style.transition = now || drag ? 'none' : ''; w.style.transform = tf; });
-        world.setAttribute('data-wall', WALLS[S.wall]);
-      });
-    }
-    function fit() {
-      var st = app.querySelector('.stage'), cam = app.querySelector('.cam'); if (!st || !cam) return;
-      var w = st.clientWidth, hh = st.clientHeight; cam.style.transform = 'scale(' + Math.min(w / 1280, hh / 720).toFixed(4) + ')';
-    }
-    if (window.ResizeObserver) new ResizeObserver(fit).observe(host); else window.addEventListener('resize', fit);
 
     function listView() {
       return h('div', { class: 'list' }, S.data.zones.map(function (z) {
@@ -196,18 +204,20 @@
     }
 
     /* ───────── 제품 상세 ───────── */
-    function closeVeil() { var v = app.querySelector('.veil:not(.gate)'); if (v) v.remove(); }
+    function closeVeil(keep) { var v = app.querySelector('.veil:not(.gate)'); if (v) v.remove(); if (keep !== true) refreshHud(); }
+    function refreshHud() { var o = app.querySelector('.hud'); if (o && S.view === 'booth') { o.parentNode.replaceChild(hud(), o); place(); } }   // 퀘스트 진행을 다시 그린다
     function veil(panel, cls) {
-      closeVeil();
+      closeVeil(true);
       var v = h('div', { class: 'veil ' + (cls || ''), onclick: function (e) { if (e.target === v) closeVeil(); } }, [panel]);
       panel.insertBefore(h('button', { class: 'x', 'aria-label': t('close'), onclick: closeVeil, text: '×' }), panel.firstChild);
       app.appendChild(v); var f = panel.querySelector('button.cta, input'); if (f) f.focus({ preventScroll: true });
     }
     function openProduct(p) {
+      S.viewed = S.viewed || {}; S.viewed[p.id] = 1;
       var v = verdict(p.id), cell = v, note = cell['note_' + S.lang] || cell.note_en;
       var btn = h('button', { class: 'cta', onclick: function () {
         var i = S.cart.indexOf(p.id); if (i >= 0) S.cart.splice(i, 1); else S.cart.push(p.id);
-        var keep = S.wall; closeVeil(); render(); S.wall = keep; aim(true); syncDots();
+        closeVeil(); render();
       }, text: S.cart.indexOf(p.id) >= 0 ? t('remove') : t('add') });
       veil(h('div', { class: 'panel prod' }, [
         (p.photo || (opts.photos && opts.photos[p.id])) ? h('img', { class: 'hero', src: photo(p.id), alt: L(p) }) : h('div', { class: 'hero noimg' }, [h('small', { text: t('photo_soon') })]),
@@ -221,7 +231,8 @@
     }
 
     /* ───────── 문의 양식 ───────── */
-    function openForm() {
+    function openForm(kind) {
+      if (kind && typeof kind !== 'string') kind = null;
       var chips = h('div', { class: 'chips' }, S.cart.length ? S.cart.map(function (id) {
         var p = S.data.products.filter(function (x) { return x.id === id; })[0];
         return h('span', {}, [L(p), h('button', { 'aria-label': t('remove'), onclick: function () { S.cart.splice(S.cart.indexOf(id), 1); openForm(); }, text: '×' })]);
@@ -247,19 +258,21 @@
             .catch(function () { send.disabled = false; send.textContent = t('send'); msg.textContent = t('err', { m: email }); msg.className = 'msg bad'; });
         } else { done('mail', payload); }
       } }, [
-        h('h2', { text: t('form_title') }), h('p', { text: t('form_sub') }),
+        h('h2', { text: t(kind === 'sample' ? 'sample_title' : 'form_title') }), h('p', { text: t('form_sub') }),
         h('label', {}, [h('span', { text: t('f_products') }), chips]),
         h('div', { class: 'two' }, [fld('name', 'text', 1), fld('company', 'text', 1)]), h('div', { class: 'two' }, [fld('email', 'email', 1), fld('phone', 'tel')]),
         h('label', {}, [h('span', { text: t('f_country') }), h('input', { value: cName(), readonly: 'readonly' })]),
         fld('msg', 'area'), hp, h('label', { class: 'ck' }, [ok, h('span', { text: t('f_consent') })]), msg, send
       ]);
       veil(form);
+      if (kind === 'sample' && !f.msg.value) f.msg.value = t('sample_msg');
     }
     function mailText(p) {
       return ['[Virtual Booth Inquiry]', 'Name: ' + p.name, 'Company: ' + p.company, 'Email: ' + p.email, 'Phone: ' + (p.phone || '-'), 'Import country: ' + (p.import_country || '-'),
         'Products:', p.products.length ? p.products.map(function (x) { return ' - ' + x.name + ' (preliminary check: ' + x.preliminary_check + ')'; }).join('\n') : ' - (general inquiry)', '', 'Message:', p.message || '-'].join('\n');
     }
     function done(kind, p) {
+      S.sent = true;
       host.dispatchEvent(new CustomEvent('plbooth:inquiry', { detail: p, bubbles: true }));
       var kids = [h('h2', { text: t(kind === 'sent' ? 'sent_title' : 'mail_title') }), h('p', { text: t(kind === 'sent' ? 'sent_body' : 'mail_body', { e: p.email, m: email }) })];
       if (kind === 'mail') {
