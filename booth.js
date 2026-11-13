@@ -72,6 +72,8 @@
     var root = host.attachShadow ? host.attachShadow({ mode: 'open' }) : host;
     root.appendChild(h('link', { rel: 'stylesheet', href: base + 'booth.css' }));
     var app = h('div', { class: 'plb', lang: S.lang }); root.appendChild(app);
+    // 부스 안에서 친 글자가 홈페이지의 단축키(예: 워드프레스 알림창의 n)로 새어 나가지 않게 한다.
+    ['keydown', 'keypress', 'keyup'].forEach(function (t) { app.addEventListener(t, function (e) { e.stopPropagation(); }); });
     var t = function (k, v) { var s = T[S.lang][k] || T.en[k] || k; for (var x in v || {}) s = s.replace('{' + x + '}', v[x]); return s; };
     var L = function (o, k) { return o[(k ? k + '_' : '') + S.lang] || o[(k ? k + '_' : '') + 'en'] || ''; };
     var photo = function (id) { return (opts.photos && opts.photos[id]) || ((remote && S.remoteOk !== false) ? remote : base) + 'assets/products/' + id + '.jpg'; };   // 사진·데이터는 붙이는 쪽에서 덮어쓸 수 있다
