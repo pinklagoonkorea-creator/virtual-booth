@@ -1,0 +1,731 @@
+{
+ "updated": "2026-11-13",
+ "markets": {
+  "US": {
+   "oyster-halfshell": {
+    "v": "cond",
+    "note_en": "Frozen oysters from FDA ICSSL-listed Korean shippers only.",
+    "note_ko": "FDA ICSSL 등재 한국 업체의 냉동 굴만 가능합니다."
+   },
+   "oyster-live": {
+    "v": "check"
+   },
+   "clam-frozen": {
+    "v": "check"
+   },
+   "redcrab-meat": {
+    "v": "check"
+   },
+   "redcrab-shell": {
+    "v": "check"
+   },
+   "kanimiso": {
+    "v": "check"
+   },
+   "oyster-breaded": {
+    "v": "check"
+   },
+   "fish-yellowtail-fillet": {
+    "v": "check"
+   },
+   "fish-mackerel": {
+    "v": "check"
+   },
+   "fish-pomfret": {
+    "v": "check"
+   },
+   "seaweed-salad": {
+    "v": "cond",
+    "note_en": "Requires a formulation using FDA-permitted colours.",
+    "note_ko": "FDA 허용 색소를 쓴 배합이어야 합니다."
+   },
+   "nori-sushi": {
+    "v": "check"
+   },
+   "nori-seasoned": {
+    "v": "check"
+   },
+   "tobiko": {
+    "v": "check"
+   },
+   "sourced-saury": {
+    "v": "check"
+   },
+   "sourced-pangasius": {
+    "v": "cond",
+    "note_en": "Requires direct shipment from an FSIS-eligible establishment in Vietnam.",
+    "note_ko": "베트남 FSIS 적격 시설에서 직접 선적해야 합니다."
+   }
+  },
+  "CA": {
+   "oyster-halfshell": {
+    "v": "check"
+   },
+   "oyster-live": {
+    "v": "no"
+   },
+   "clam-frozen": {
+    "v": "no"
+   },
+   "redcrab-meat": {
+    "v": "check"
+   },
+   "redcrab-shell": {
+    "v": "check"
+   },
+   "kanimiso": {
+    "v": "check"
+   },
+   "oyster-breaded": {
+    "v": "check"
+   },
+   "fish-yellowtail-fillet": {
+    "v": "check"
+   },
+   "fish-mackerel": {
+    "v": "check"
+   },
+   "fish-pomfret": {
+    "v": "check"
+   },
+   "seaweed-salad": {
+    "v": "check"
+   },
+   "nori-sushi": {
+    "v": "check"
+   },
+   "nori-seasoned": {
+    "v": "check"
+   },
+   "tobiko": {
+    "v": "check"
+   },
+   "sourced-saury": {
+    "v": "check"
+   },
+   "sourced-pangasius": {
+    "v": "check"
+   }
+  },
+  "EU": {
+   "oyster-halfshell": {
+    "v": "cond",
+    "note_en": "Requires production at an EU-listed establishment and, where applicable, a catch certificate.",
+    "note_ko": "EU 등재 시설 생산분이어야 하며, 해당되는 경우 어획증명서가 필요합니다."
+   },
+   "oyster-live": {
+    "v": "no"
+   },
+   "clam-frozen": {
+    "v": "cond",
+    "note_en": "Requires production at an EU-listed establishment and, where applicable, a catch certificate.",
+    "note_ko": "EU 등재 시설 생산분이어야 하며, 해당되는 경우 어획증명서가 필요합니다."
+   },
+   "redcrab-meat": {
+    "v": "cond",
+    "note_en": "Requires production at an EU-listed establishment and, where applicable, a catch certificate.",
+    "note_ko": "EU 등재 시설 생산분이어야 하며, 해당되는 경우 어획증명서가 필요합니다."
+   },
+   "redcrab-shell": {
+    "v": "check"
+   },
+   "kanimiso": {
+    "v": "cond",
+    "note_en": "Requires production at an EU-listed establishment and, where applicable, a catch certificate.",
+    "note_ko": "EU 등재 시설 생산분이어야 하며, 해당되는 경우 어획증명서가 필요합니다."
+   },
+   "oyster-breaded": {
+    "v": "cond",
+    "note_en": "Requires production at an EU-listed establishment and, where applicable, a catch certificate.",
+    "note_ko": "EU 등재 시설 생산분이어야 하며, 해당되는 경우 어획증명서가 필요합니다."
+   },
+   "fish-yellowtail-fillet": {
+    "v": "cond",
+    "note_en": "Requires production at an EU-listed establishment and, where applicable, a catch certificate.",
+    "note_ko": "EU 등재 시설 생산분이어야 하며, 해당되는 경우 어획증명서가 필요합니다."
+   },
+   "fish-mackerel": {
+    "v": "cond",
+    "note_en": "Requires production at an EU-listed establishment and, where applicable, a catch certificate.",
+    "note_ko": "EU 등재 시설 생산분이어야 하며, 해당되는 경우 어획증명서가 필요합니다."
+   },
+   "fish-pomfret": {
+    "v": "cond",
+    "note_en": "Requires production at an EU-listed establishment and, where applicable, a catch certificate.",
+    "note_ko": "EU 등재 시설 생산분이어야 하며, 해당되는 경우 어획증명서가 필요합니다."
+   },
+   "seaweed-salad": {
+    "v": "check"
+   },
+   "nori-sushi": {
+    "v": "check"
+   },
+   "nori-seasoned": {
+    "v": "check"
+   },
+   "tobiko": {
+    "v": "cond",
+    "note_en": "Requires production at an EU-listed establishment and, where applicable, a catch certificate.",
+    "note_ko": "EU 등재 시설 생산분이어야 하며, 해당되는 경우 어획증명서가 필요합니다."
+   },
+   "sourced-saury": {
+    "v": "check"
+   },
+   "sourced-pangasius": {
+    "v": "check"
+   }
+  },
+  "TW": {
+   "oyster-halfshell": {
+    "v": "ok"
+   },
+   "oyster-live": {
+    "v": "check"
+   },
+   "clam-frozen": {
+    "v": "cond"
+   },
+   "redcrab-meat": {
+    "v": "cond"
+   },
+   "redcrab-shell": {
+    "v": "check"
+   },
+   "kanimiso": {
+    "v": "ok"
+   },
+   "oyster-breaded": {
+    "v": "ok"
+   },
+   "fish-yellowtail-fillet": {
+    "v": "check"
+   },
+   "fish-mackerel": {
+    "v": "check"
+   },
+   "fish-pomfret": {
+    "v": "check"
+   },
+   "seaweed-salad": {
+    "v": "cond"
+   },
+   "nori-sushi": {
+    "v": "check"
+   },
+   "nori-seasoned": {
+    "v": "check"
+   },
+   "tobiko": {
+    "v": "check"
+   },
+   "sourced-saury": {
+    "v": "check"
+   },
+   "sourced-pangasius": {
+    "v": "check"
+   }
+  },
+  "CN": {
+   "oyster-halfshell": {
+    "v": "check"
+   },
+   "oyster-live": {
+    "v": "check"
+   },
+   "clam-frozen": {
+    "v": "check"
+   },
+   "redcrab-meat": {
+    "v": "cond",
+    "note_en": "Requires production at a GACC-registered facility.",
+    "note_ko": "GACC 등록 시설 생산분이어야 합니다."
+   },
+   "redcrab-shell": {
+    "v": "check"
+   },
+   "kanimiso": {
+    "v": "cond",
+    "note_en": "Requires production at a GACC-registered facility.",
+    "note_ko": "GACC 등록 시설 생산분이어야 합니다."
+   },
+   "oyster-breaded": {
+    "v": "check"
+   },
+   "fish-yellowtail-fillet": {
+    "v": "cond",
+    "note_en": "Requires production at a GACC-registered facility.",
+    "note_ko": "GACC 등록 시설 생산분이어야 합니다."
+   },
+   "fish-mackerel": {
+    "v": "cond",
+    "note_en": "Requires production at a GACC-registered facility.",
+    "note_ko": "GACC 등록 시설 생산분이어야 합니다."
+   },
+   "fish-pomfret": {
+    "v": "cond",
+    "note_en": "Requires production at a GACC-registered facility.",
+    "note_ko": "GACC 등록 시설 생산분이어야 합니다."
+   },
+   "seaweed-salad": {
+    "v": "check"
+   },
+   "nori-sushi": {
+    "v": "check"
+   },
+   "nori-seasoned": {
+    "v": "check"
+   },
+   "tobiko": {
+    "v": "check"
+   },
+   "sourced-saury": {
+    "v": "check"
+   },
+   "sourced-pangasius": {
+    "v": "check"
+   }
+  },
+  "HK": {
+   "oyster-halfshell": {
+    "v": "cond",
+    "note_en": "A health certificate is expected; local sale of shellfish needs the seller's permit.",
+    "note_ko": "위생증명서가 요구되며, 현지 판매자는 패류 판매 허가가 필요합니다."
+   },
+   "oyster-live": {
+    "v": "cond",
+    "note_en": "A health certificate is expected; local sale of shellfish needs the seller's permit.",
+    "note_ko": "위생증명서가 요구되며, 현지 판매자는 패류 판매 허가가 필요합니다."
+   },
+   "clam-frozen": {
+    "v": "cond",
+    "note_en": "A health certificate is expected; local sale of shellfish needs the seller's permit.",
+    "note_ko": "위생증명서가 요구되며, 현지 판매자는 패류 판매 허가가 필요합니다."
+   },
+   "redcrab-meat": {
+    "v": "ok"
+   },
+   "redcrab-shell": {
+    "v": "check"
+   },
+   "kanimiso": {
+    "v": "check"
+   },
+   "oyster-breaded": {
+    "v": "ok"
+   },
+   "fish-yellowtail-fillet": {
+    "v": "ok"
+   },
+   "fish-mackerel": {
+    "v": "ok"
+   },
+   "fish-pomfret": {
+    "v": "ok"
+   },
+   "seaweed-salad": {
+    "v": "cond"
+   },
+   "nori-sushi": {
+    "v": "ok"
+   },
+   "nori-seasoned": {
+    "v": "ok"
+   },
+   "tobiko": {
+    "v": "cond"
+   },
+   "sourced-saury": {
+    "v": "cond",
+    "note_en": "Depends on the origin of the fish.",
+    "note_ko": "원산지에 따라 달라집니다."
+   },
+   "sourced-pangasius": {
+    "v": "ok"
+   }
+  },
+  "JP": {
+   "oyster-halfshell": {
+    "v": "cond",
+    "note_en": "Bivalves require a Korean government health certificate.",
+    "note_ko": "이매패류는 한국 정부 위생증명서가 필요합니다."
+   },
+   "oyster-live": {
+    "v": "cond",
+    "note_en": "Bivalves require a Korean government health certificate.",
+    "note_ko": "이매패류는 한국 정부 위생증명서가 필요합니다."
+   },
+   "clam-frozen": {
+    "v": "cond",
+    "note_en": "Bivalves require a Korean government health certificate.",
+    "note_ko": "이매패류는 한국 정부 위생증명서가 필요합니다."
+   },
+   "redcrab-meat": {
+    "v": "ok"
+   },
+   "redcrab-shell": {
+    "v": "check"
+   },
+   "kanimiso": {
+    "v": "cond"
+   },
+   "oyster-breaded": {
+    "v": "cond",
+    "note_en": "Bivalves require a Korean government health certificate.",
+    "note_ko": "이매패류는 한국 정부 위생증명서가 필요합니다."
+   },
+   "fish-yellowtail-fillet": {
+    "v": "cond",
+    "note_en": "Import-quota (IQ) item in Japan: the importer needs a quota allocation.",
+    "note_ko": "일본 수입할당(IQ) 품목입니다. 수입자가 할당을 보유해야 합니다."
+   },
+   "fish-mackerel": {
+    "v": "cond",
+    "note_en": "Import-quota (IQ) item in Japan: the importer needs a quota allocation.",
+    "note_ko": "일본 수입할당(IQ) 품목입니다. 수입자가 할당을 보유해야 합니다."
+   },
+   "fish-pomfret": {
+    "v": "ok"
+   },
+   "seaweed-salad": {
+    "v": "cond"
+   },
+   "nori-sushi": {
+    "v": "cond",
+    "note_en": "Import-quota (IQ) item in Japan: the importer needs a quota allocation.",
+    "note_ko": "일본 수입할당(IQ) 품목입니다. 수입자가 할당을 보유해야 합니다."
+   },
+   "nori-seasoned": {
+    "v": "cond",
+    "note_en": "Import-quota (IQ) item in Japan: the importer needs a quota allocation.",
+    "note_ko": "일본 수입할당(IQ) 품목입니다. 수입자가 할당을 보유해야 합니다."
+   },
+   "tobiko": {
+    "v": "cond"
+   },
+   "sourced-saury": {
+    "v": "cond",
+    "note_en": "Import-quota (IQ) item in Japan: the importer needs a quota allocation.",
+    "note_ko": "일본 수입할당(IQ) 품목입니다. 수입자가 할당을 보유해야 합니다."
+   },
+   "sourced-pangasius": {
+    "v": "check"
+   }
+  },
+  "TH": {
+   "oyster-halfshell": {
+    "v": "ok"
+   },
+   "oyster-live": {
+    "v": "check"
+   },
+   "clam-frozen": {
+    "v": "check"
+   },
+   "redcrab-meat": {
+    "v": "check"
+   },
+   "redcrab-shell": {
+    "v": "check"
+   },
+   "kanimiso": {
+    "v": "check"
+   },
+   "oyster-breaded": {
+    "v": "check"
+   },
+   "fish-yellowtail-fillet": {
+    "v": "check"
+   },
+   "fish-mackerel": {
+    "v": "check"
+   },
+   "fish-pomfret": {
+    "v": "check"
+   },
+   "seaweed-salad": {
+    "v": "check"
+   },
+   "nori-sushi": {
+    "v": "check"
+   },
+   "nori-seasoned": {
+    "v": "check"
+   },
+   "tobiko": {
+    "v": "check"
+   },
+   "sourced-saury": {
+    "v": "check"
+   },
+   "sourced-pangasius": {
+    "v": "check"
+   }
+  },
+  "VN": {
+   "oyster-halfshell": {
+    "v": "cond",
+    "note_en": "Requires production at a facility on Vietnam's list of registered exporters.",
+    "note_ko": "베트남 등록 수출시설 생산분이어야 합니다."
+   },
+   "oyster-live": {
+    "v": "check"
+   },
+   "clam-frozen": {
+    "v": "cond",
+    "note_en": "Requires production at a facility on Vietnam's list of registered exporters.",
+    "note_ko": "베트남 등록 수출시설 생산분이어야 합니다."
+   },
+   "redcrab-meat": {
+    "v": "cond",
+    "note_en": "Requires production at a facility on Vietnam's list of registered exporters.",
+    "note_ko": "베트남 등록 수출시설 생산분이어야 합니다."
+   },
+   "redcrab-shell": {
+    "v": "check"
+   },
+   "kanimiso": {
+    "v": "check"
+   },
+   "oyster-breaded": {
+    "v": "check"
+   },
+   "fish-yellowtail-fillet": {
+    "v": "cond",
+    "note_en": "Requires production at a facility on Vietnam's list of registered exporters.",
+    "note_ko": "베트남 등록 수출시설 생산분이어야 합니다."
+   },
+   "fish-mackerel": {
+    "v": "cond",
+    "note_en": "Requires production at a facility on Vietnam's list of registered exporters.",
+    "note_ko": "베트남 등록 수출시설 생산분이어야 합니다."
+   },
+   "fish-pomfret": {
+    "v": "cond",
+    "note_en": "Requires production at a facility on Vietnam's list of registered exporters.",
+    "note_ko": "베트남 등록 수출시설 생산분이어야 합니다."
+   },
+   "seaweed-salad": {
+    "v": "check"
+   },
+   "nori-sushi": {
+    "v": "check"
+   },
+   "nori-seasoned": {
+    "v": "check"
+   },
+   "tobiko": {
+    "v": "check"
+   },
+   "sourced-saury": {
+    "v": "check"
+   },
+   "sourced-pangasius": {
+    "v": "check"
+   }
+  },
+  "ID": {
+   "oyster-halfshell": {
+    "v": "check"
+   },
+   "oyster-live": {
+    "v": "check"
+   },
+   "clam-frozen": {
+    "v": "check"
+   },
+   "redcrab-meat": {
+    "v": "check"
+   },
+   "redcrab-shell": {
+    "v": "check"
+   },
+   "kanimiso": {
+    "v": "check"
+   },
+   "oyster-breaded": {
+    "v": "check"
+   },
+   "fish-yellowtail-fillet": {
+    "v": "check"
+   },
+   "fish-mackerel": {
+    "v": "check"
+   },
+   "fish-pomfret": {
+    "v": "check"
+   },
+   "seaweed-salad": {
+    "v": "check"
+   },
+   "nori-sushi": {
+    "v": "check"
+   },
+   "nori-seasoned": {
+    "v": "check"
+   },
+   "tobiko": {
+    "v": "check"
+   },
+   "sourced-saury": {
+    "v": "check"
+   },
+   "sourced-pangasius": {
+    "v": "check"
+   }
+  },
+  "MY": {
+   "oyster-halfshell": {
+    "v": "ok"
+   },
+   "oyster-live": {
+    "v": "check"
+   },
+   "clam-frozen": {
+    "v": "check"
+   },
+   "redcrab-meat": {
+    "v": "check"
+   },
+   "redcrab-shell": {
+    "v": "check"
+   },
+   "kanimiso": {
+    "v": "check"
+   },
+   "oyster-breaded": {
+    "v": "ok"
+   },
+   "fish-yellowtail-fillet": {
+    "v": "check"
+   },
+   "fish-mackerel": {
+    "v": "check"
+   },
+   "fish-pomfret": {
+    "v": "check"
+   },
+   "seaweed-salad": {
+    "v": "check"
+   },
+   "nori-sushi": {
+    "v": "check"
+   },
+   "nori-seasoned": {
+    "v": "check"
+   },
+   "tobiko": {
+    "v": "check"
+   },
+   "sourced-saury": {
+    "v": "check"
+   },
+   "sourced-pangasius": {
+    "v": "check"
+   }
+  },
+  "SG": {
+   "oyster-halfshell": {
+    "v": "cond",
+    "note_en": "A health certificate per lot is required by the SFA.",
+    "note_ko": "SFA 규정에 따라 로트별 위생증명서가 필요합니다."
+   },
+   "oyster-live": {
+    "v": "no"
+   },
+   "clam-frozen": {
+    "v": "check"
+   },
+   "redcrab-meat": {
+    "v": "cond",
+    "note_en": "Frozen crab meat only, with a health certificate per lot.",
+    "note_ko": "냉동 게살만 가능하며 로트별 위생증명서가 필요합니다."
+   },
+   "redcrab-shell": {
+    "v": "check"
+   },
+   "kanimiso": {
+    "v": "check"
+   },
+   "oyster-breaded": {
+    "v": "check"
+   },
+   "fish-yellowtail-fillet": {
+    "v": "check"
+   },
+   "fish-mackerel": {
+    "v": "check"
+   },
+   "fish-pomfret": {
+    "v": "check"
+   },
+   "seaweed-salad": {
+    "v": "check"
+   },
+   "nori-sushi": {
+    "v": "check"
+   },
+   "nori-seasoned": {
+    "v": "check"
+   },
+   "tobiko": {
+    "v": "check"
+   },
+   "sourced-saury": {
+    "v": "check"
+   },
+   "sourced-pangasius": {
+    "v": "check"
+   }
+  },
+  "AU": {
+   "oyster-halfshell": {
+    "v": "no"
+   },
+   "oyster-live": {
+    "v": "no"
+   },
+   "clam-frozen": {
+    "v": "check"
+   },
+   "redcrab-meat": {
+    "v": "check"
+   },
+   "redcrab-shell": {
+    "v": "check"
+   },
+   "kanimiso": {
+    "v": "check"
+   },
+   "oyster-breaded": {
+    "v": "no"
+   },
+   "fish-yellowtail-fillet": {
+    "v": "check"
+   },
+   "fish-mackerel": {
+    "v": "check"
+   },
+   "fish-pomfret": {
+    "v": "check"
+   },
+   "seaweed-salad": {
+    "v": "check"
+   },
+   "nori-sushi": {
+    "v": "check"
+   },
+   "nori-seasoned": {
+    "v": "check"
+   },
+   "tobiko": {
+    "v": "check"
+   },
+   "sourced-saury": {
+    "v": "check"
+   },
+   "sourced-pangasius": {
+    "v": "check"
+   }
+  }
+ }
+}

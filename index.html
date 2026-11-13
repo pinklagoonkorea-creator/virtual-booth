@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pink Lagoon Virtual Booth</title>
+<style>html,body{margin:0;height:100%;background:#080c17}#pink-lagoon-booth{--plb-height:100vh;--plb-radius:0px}</style>
+</head>
+<body>
+<!-- 단독 실행·iframe용 페이지. 주소 뒤에 ?lang=ko, ?endpoint=https://... 를 붙일 수 있다. -->
+<div id="pink-lagoon-booth"></div>
+<script src="booth.js" data-mount="manual"></script>
+<script>
+  var q = new URLSearchParams(location.search);
+  PinkLagoonBooth.mount(document.getElementById('pink-lagoon-booth'), { base: './', lang: q.get('lang') || 'en', endpoint: q.get('endpoint') || '', noAutoMail: q.get('noAutoMail') === '1' });
+</script>
+</body>
+</html>

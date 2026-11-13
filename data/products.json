@@ -1,0 +1,323 @@
+{
+ "zones": [
+  {
+   "id": "shellfish",
+   "wall": "left",
+   "en": "Oysters & Shellfish",
+   "ko": "굴 · 패류"
+  },
+  {
+   "id": "crabfish",
+   "wall": "back",
+   "en": "Crab & Fish",
+   "ko": "게 · 생선"
+  },
+  {
+   "id": "seaweed",
+   "wall": "right",
+   "en": "Seaweed, Roe & Global Sourcing",
+   "ko": "해조 · 어란 · 해외 소싱"
+  }
+ ],
+ "products": [
+  {
+   "id": "oyster-halfshell",
+   "zone": "shellfish",
+   "photo": true,
+   "en": "Frozen Half-Shell Oyster",
+   "ko": "냉동 하프쉘 굴",
+   "latin": "Crassostrea gigas",
+   "origin_en": "Republic of Korea",
+   "origin_ko": "대한민국",
+   "desc_en": "Half-shell Pacific oysters, frozen. Sizes M (7–9 cm), L (9–11 cm), 2L (11 cm up).",
+   "desc_ko": "반각 참굴, 냉동. 규격 M(7–9cm), L(9–11cm), 2L(11cm 이상)."
+  },
+  {
+   "id": "oyster-live",
+   "zone": "shellfish",
+   "photo": true,
+   "brand": "stellamaris",
+   "en": "Stella Maris Live Oyster",
+   "ko": "스텔라마리스 활굴",
+   "latin": "Crassostrea gigas (triploid)",
+   "origin_en": "Republic of Korea",
+   "origin_ko": "대한민국",
+   "desc_en": "Premium triploid oysters in shell, shipped live/chilled.",
+   "desc_ko": "프리미엄 삼배체 각굴, 활·냉장 출하."
+  },
+  {
+   "id": "clam-frozen",
+   "zone": "shellfish",
+   "photo": true,
+   "en": "Frozen Whole Clam",
+   "ko": "냉동 활바지락",
+   "latin": "Ruditapes philippinarum",
+   "origin_en": "Republic of Korea",
+   "origin_ko": "대한민국",
+   "desc_en": "Whole short-neck clams in shell, frozen.",
+   "desc_ko": "껍데기째 얼린 바지락."
+  },
+  {
+   "id": "oyster-breaded",
+   "zone": "shellfish",
+   "photo": true,
+   "en": "Breaded Oyster (Kaki Fry)",
+   "ko": "굴튀김 (빵가루 굴)",
+   "latin": "Crassostrea gigas",
+   "origin_en": "Republic of Korea",
+   "origin_ko": "대한민국",
+   "desc_en": "Hand-breaded oysters, frozen, ready to fry. 25 g per piece.",
+   "desc_ko": "수작업 빵가루 굴, 냉동, 튀김용. 개당 25g."
+  },
+  {
+   "id": "redcrab-meat",
+   "zone": "crabfish",
+   "photo": true,
+   "en": "Red Snow Crab Meat Block",
+   "ko": "홍게살 블록",
+   "latin": "Chionoecetes japonicus",
+   "origin_en": "Republic of Korea",
+   "origin_ko": "대한민국",
+   "desc_en": "Boiled red snow crab meat, frozen in blocks.",
+   "desc_ko": "자숙 홍게살, 블록 냉동."
+  },
+  {
+   "id": "redcrab-shell",
+   "zone": "crabfish",
+   "photo": false,
+   "en": "Red Snow Crab Shell",
+   "ko": "홍게 껍데기 (게딱지)",
+   "latin": "Chionoecetes japonicus",
+   "origin_en": "Republic of Korea",
+   "origin_ko": "대한민국",
+   "desc_en": "Cleaned crab carapace for gratin and stuffed-crab dishes.",
+   "desc_ko": "그라탕·게딱지 요리용 세척 게딱지."
+  },
+  {
+   "id": "kanimiso",
+   "zone": "crabfish",
+   "photo": false,
+   "en": "Kanimiso (Crab Miso)",
+   "ko": "카니미소",
+   "latin": "Chionoecetes japonicus",
+   "origin_en": "Republic of Korea",
+   "origin_ko": "대한민국",
+   "desc_en": "Crab tomalley paste for sushi and Japanese cuisine.",
+   "desc_ko": "스시·일식용 게 내장 페이스트."
+  },
+  {
+   "id": "fish-yellowtail-fillet",
+   "zone": "crabfish",
+   "photo": false,
+   "en": "Frozen Yellowtail Fillet",
+   "ko": "냉동 방어 필렛",
+   "latin": "Seriola quinqueradiata",
+   "origin_en": "Republic of Korea",
+   "origin_ko": "대한민국",
+   "desc_en": "Yellowtail (hamachi) fillets, frozen.",
+   "desc_ko": "방어 필렛, 냉동."
+  },
+  {
+   "id": "fish-mackerel",
+   "zone": "crabfish",
+   "photo": true,
+   "en": "Frozen Mackerel (Block / Fillet)",
+   "ko": "냉동 고등어 (블록 · 필렛)",
+   "latin": "Scomber japonicus",
+   "origin_en": "Republic of Korea",
+   "origin_ko": "대한민국",
+   "desc_en": "Pacific mackerel, whole-round blocks or fillets, frozen.",
+   "desc_ko": "고등어 원물 블록 또는 필렛, 냉동."
+  },
+  {
+   "id": "fish-pomfret",
+   "zone": "crabfish",
+   "photo": false,
+   "en": "Frozen Pomfret Block",
+   "ko": "냉동 병어 블록",
+   "latin": "Pampus spp.",
+   "origin_en": "Republic of Korea",
+   "origin_ko": "대한민국",
+   "desc_en": "Whole pomfret, block frozen.",
+   "desc_ko": "병어 원물, 블록 냉동."
+  },
+  {
+   "id": "seaweed-salad",
+   "zone": "seaweed",
+   "photo": true,
+   "en": "Frozen Seaweed Salad",
+   "ko": "해초샐러드",
+   "latin": "Undaria pinnatifida",
+   "origin_en": "Republic of Korea",
+   "origin_ko": "대한민국",
+   "desc_en": "Seasoned wakame salad, frozen. 1 kg or 2 kg packs.",
+   "desc_ko": "조미 미역 샐러드, 냉동. 1kg·2kg 포장."
+  },
+  {
+   "id": "nori-sushi",
+   "zone": "seaweed",
+   "photo": true,
+   "en": "Sushi Nori (Full Sheet)",
+   "ko": "전장김 (스시노리)",
+   "latin": "Pyropia spp.",
+   "origin_en": "Republic of Korea",
+   "origin_ko": "대한민국",
+   "desc_en": "Roasted full-size nori sheets. Grades Gold / Blue / Green; 50 or 100 sheets per pack.",
+   "desc_ko": "구운 전장김. 골드·블루·그린 등급, 50매·100매 포장."
+  },
+  {
+   "id": "nori-seasoned",
+   "zone": "seaweed",
+   "photo": false,
+   "en": "Seasoned Laver (Gim)",
+   "ko": "조미김",
+   "latin": "Pyropia spp.",
+   "origin_en": "Republic of Korea",
+   "origin_ko": "대한민국",
+   "desc_en": "Korean seasoned and roasted laver snack.",
+   "desc_ko": "한국식 조미 구이김."
+  },
+  {
+   "id": "tobiko",
+   "zone": "seaweed",
+   "photo": true,
+   "en": "Tobiko (Flying Fish Roe)",
+   "ko": "날치알",
+   "latin": "Exocoetidae (roe)",
+   "origin_en": "Processed in Korea / global sourcing",
+   "origin_ko": "한국 가공 · 해외 소싱",
+   "desc_en": "Seasoned flying fish roe for sushi. Colours: gold, black, red, orange, green (wasabi).",
+   "desc_ko": "스시용 조미 날치알. 색상: 골드·블랙·레드·오렌지·그린(와사비)."
+  },
+  {
+   "id": "sourced-saury",
+   "zone": "seaweed",
+   "photo": false,
+   "sourcing": true,
+   "en": "Pacific Saury",
+   "ko": "꽁치",
+   "latin": "Cololabis saira",
+   "origin_en": "Global sourcing",
+   "origin_ko": "해외 소싱",
+   "desc_en": "Frozen saury sourced through our overseas partner network.",
+   "desc_ko": "해외 협력 공장을 통해 소싱하는 냉동 꽁치."
+  },
+  {
+   "id": "sourced-pangasius",
+   "zone": "seaweed",
+   "photo": true,
+   "sourcing": true,
+   "en": "Pangasius Fillet",
+   "ko": "팡가시우스 필렛",
+   "latin": "Pangasianodon hypophthalmus",
+   "origin_en": "Vietnam (global sourcing)",
+   "origin_ko": "베트남 (해외 소싱)",
+   "desc_en": "Frozen pangasius fillets (well trimmed / semi trimmed / untrimmed), IQF or interleaved.",
+   "desc_ko": "냉동 팡가시우스 필렛(트리밍 등급별), IQF 또는 인터리브."
+  }
+ ],
+ "countries": [
+  {
+   "code": "US",
+   "market": "US",
+   "en": "United States",
+   "ko": "미국"
+  },
+  {
+   "code": "CA",
+   "market": "CA",
+   "en": "Canada",
+   "ko": "캐나다"
+  },
+  {
+   "code": "ES",
+   "market": "EU",
+   "en": "Spain",
+   "ko": "스페인"
+  },
+  {
+   "code": "PT",
+   "market": "EU",
+   "en": "Portugal",
+   "ko": "포르투갈"
+  },
+  {
+   "code": "IT",
+   "market": "EU",
+   "en": "Italy",
+   "ko": "이탈리아"
+  },
+  {
+   "code": "EU",
+   "market": "EU",
+   "en": "Other EU country",
+   "ko": "기타 EU 국가"
+  },
+  {
+   "code": "TW",
+   "market": "TW",
+   "en": "Taiwan",
+   "ko": "대만"
+  },
+  {
+   "code": "CN",
+   "market": "CN",
+   "en": "China (Mainland)",
+   "ko": "중국 (본토)"
+  },
+  {
+   "code": "HK",
+   "market": "HK",
+   "en": "Hong Kong",
+   "ko": "홍콩"
+  },
+  {
+   "code": "JP",
+   "market": "JP",
+   "en": "Japan",
+   "ko": "일본"
+  },
+  {
+   "code": "TH",
+   "market": "TH",
+   "en": "Thailand",
+   "ko": "태국"
+  },
+  {
+   "code": "VN",
+   "market": "VN",
+   "en": "Vietnam",
+   "ko": "베트남"
+  },
+  {
+   "code": "ID",
+   "market": "ID",
+   "en": "Indonesia",
+   "ko": "인도네시아"
+  },
+  {
+   "code": "MY",
+   "market": "MY",
+   "en": "Malaysia",
+   "ko": "말레이시아"
+  },
+  {
+   "code": "SG",
+   "market": "SG",
+   "en": "Singapore",
+   "ko": "싱가포르"
+  },
+  {
+   "code": "AU",
+   "market": "AU",
+   "en": "Australia",
+   "ko": "호주"
+  },
+  {
+   "code": "XX",
+   "market": null,
+   "en": "Other country",
+   "ko": "그 밖의 국가"
+  }
+ ]
+}

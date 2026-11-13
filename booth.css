@@ -1,0 +1,128 @@
+/* Pink Lagoon 가상 부스. 높이는 붙이는 쪽에서 --plb-height 로 바꿀 수 있다. */
+:host { display: block; }
+.plb { --pink: #e56fab; --blue: #3566b0; --ink: #1b1f2a; --navy: #0d1424; --line: #e3e6ee; --grad: linear-gradient(90deg, #ef86bd, #8f7fc4 55%, #3566b0);
+  position: relative; height: var(--plb-height, min(88vh, 780px)); min-height: 540px; overflow: hidden; border-radius: var(--plb-radius, 14px);
+  background: radial-gradient(120% 90% at 50% 0%, #1c2a4a 0%, #0d1424 60%, #080c17 100%); color: var(--ink);
+  font: 400 15px/1.5 'PLB Poppins', 'Poppins', 'Pretendard', 'Noto Sans KR', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+.plb *, .plb *::before, .plb *::after { box-sizing: border-box; }
+.plb button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+.plb button:focus-visible, .plb select:focus-visible, .plb input:focus-visible, .plb textarea:focus-visible, .plb a:focus-visible { outline: 3px solid #ffd3ea; outline-offset: 2px; }
+
+/* 위쪽 줄 */
+.top { position: absolute; inset: 0 0 auto 0; height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 18px; z-index: 5; color: #fff; }
+.brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.brand img { height: 40px; width: auto; border-radius: 8px; background: #fff; padding: 3px; }
+.brand b { display: block; font-weight: 700; letter-spacing: .04em; line-height: 1.1; }
+.brand small { font-size: 11px; opacity: .75; }
+.tools { display: flex; align-items: center; gap: 8px; }
+.plb .ghost { padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.35); color: #fff; font-size: 13px; white-space: nowrap; }
+.plb .ghost:hover { background: rgba(255,255,255,.12); }
+.plb .cta { padding: 9px 18px; border-radius: 999px; background: var(--grad); color: #fff; font-weight: 600; font-size: 14px; white-space: nowrap; text-decoration: none; display: inline-block; box-shadow: 0 6px 18px rgba(229,111,171,.35); }
+.plb .cta:hover { filter: brightness(1.07); }
+.plb .cta[disabled] { opacity: .45; cursor: not-allowed; box-shadow: none; }
+.plb .cta.big { padding: 13px 26px; font-size: 16px; }
+.chip { display: flex; align-items: baseline; gap: 7px; padding: 7px 14px; border-radius: 999px; background: rgba(255,255,255,.1); color: #fff; font-size: 13px; white-space: nowrap; }
+.chip small { opacity: .7; font-size: 11px; } .chip i { font-style: normal; font-size: 11px; text-decoration: underline; opacity: .8; }
+
+/* 무대 */
+.stage { position: absolute; inset: 64px 0 0 0; overflow: hidden; }
+.scene { position: absolute; inset: 0; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
+.scene:active { cursor: grabbing; }
+.cam { position: absolute; left: 50%; top: 50%; width: 1280px; height: 720px; margin: -360px 0 0 -640px; perspective: 1150px; perspective-origin: 50% 46%; }
+.world { position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform-style: preserve-3d; transition: transform .95s cubic-bezier(.2,.8,.2,1); }
+.wall, .floor, .ceil { position: absolute; backface-visibility: hidden; will-change: transform; }
+.wall *, .desk { backface-visibility: hidden; }
+.wall { height: 720px; margin-top: -360px; /* 벽 안쪽은 평면으로 둔다: 벽마다 3D 자식을 두면 크롬이 벽끼리 잘못 가린다 */ background: linear-gradient(180deg, #ffffff 0%, #f4f6fb 70%, #e7ebf4 100%); }
+.wall::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 14px; background: var(--grad); }
+.wall.back { width: 1500px; margin-left: -750px; transform: translateZ(-500px); }
+.wall.left { width: 1000px; margin-left: -500px; transform: rotateY(90deg) translateZ(-750px); background: linear-gradient(180deg, #fbfcff, #eef1f8 70%, #dfe4ef); }
+.wall.right { width: 1000px; margin-left: -500px; transform: rotateY(-90deg) translateZ(-750px); background: linear-gradient(180deg, #fbfcff, #eef1f8 70%, #dfe4ef); }
+.floor { width: 1500px; height: 1000px; margin: -500px 0 0 -750px; transform: rotateX(90deg) translateZ(-360px);
+  background: linear-gradient(180deg, #cfd6e6, #aab4cc), repeating-linear-gradient(90deg, rgba(255,255,255,.25) 0 2px, transparent 2px 125px); background-blend-mode: overlay; }
+.ceil { width: 1500px; height: 1000px; margin: -500px 0 0 -750px; transform: rotateX(-90deg) translateZ(-360px); background: radial-gradient(60% 50% at 50% 60%, #ffffff, #dfe5f2); }
+.sign { position: absolute; left: 0; top: 0; width: 520px; margin: -322px 0 0 -260px; transform: translateZ(-440px); backface-visibility: hidden; display: flex; align-items: center; gap: 18px; padding: 12px 30px 12px 16px; background: #fff; border-radius: 18px; box-shadow: 0 16px 40px rgba(20,30,60,.18); }
+.sign img { height: 84px; } .sign b { display: block; font-size: 38px; font-weight: 700; letter-spacing: .05em; line-height: 1.1; }
+.sign span { font-size: 17px; color: #5b6478; letter-spacing: .08em; text-transform: uppercase; }
+.zone { position: absolute; left: 60px; top: 46px; font-size: 26px; font-weight: 600; color: var(--ink); }
+.wall.back .zone { top: 172px; font-size: 22px; color: #5b6478; }
+.grid { position: absolute; left: 56px; right: 56px; top: 112px; bottom: 60px; display: grid; grid-template-columns: repeat(var(--cols), 1fr); grid-auto-rows: 1fr; gap: 26px 28px; align-items: center; }
+.wall.back .grid { top: 206px; bottom: 30px; left: 90px; right: 90px; gap: 10px 40px; }
+
+/* 제품 카드 */
+.plb .card { display: flex; flex-direction: column; gap: 8px; text-align: left; transition: transform .3s ease; min-width: 0; }
+.wall .card { max-width: 400px; width: 100%; justify-self: center; }
+.wall.back .card { max-width: 290px; gap: 6px; }
+.wall.back .cap b { font-size: 15px; }
+.plb .card:hover, .plb .card:focus-visible { transform: scale(1.06); }
+.pic { position: relative; display: block; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background: #fff; border: 5px solid #fff; box-shadow: 0 18px 30px rgba(20,30,60,.28), 0 2px 0 rgba(255,255,255,.8) inset; }
+.pic > img:first-child { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+.noimg { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4px; text-align: center; padding: 10px; color: #fff; background: linear-gradient(135deg, #e98abf, #7f86c9 60%, #3566b0); }
+.noimg b { font-size: 19px; font-weight: 600; line-height: 1.25; } .noimg small { font-size: 12px; opacity: .85; }
+.pic .sm { position: absolute; right: 8px; bottom: 8px; width: 34%; background: rgba(0,0,0,.72); border-radius: 8px; padding: 5px 8px; }
+.pic em { position: absolute; left: 8px; top: 8px; font-style: normal; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: rgba(13,20,36,.8); color: #fff; }
+.cap { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 0 4px; }
+.cap b { font-size: 17px; font-weight: 600; line-height: 1.25; color: var(--ink); }
+.v { font-style: normal; font-size: 12px; font-weight: 600; padding: 2px 10px; border-radius: 999px; }
+.v.ok { background: #dff5e8; color: #17603a; } .v.cond { background: #fff0cf; color: #7a5200; } .v.check { background: #e6ebf5; color: #3a4764; } .v.no { background: #fde2e2; color: #8d1f1f; }
+.plb .card.in .pic { border-color: var(--pink); }
+
+/* 문의 데스크 */
+.plb .desk { position: absolute; width: 300px; height: 104px; margin: 0 0 0 -150px; transform: translate3d(470px, 208px, 250px); border-radius: 14px 14px 4px 4px; background: linear-gradient(180deg, #1b2644, #0d1424); color: #fff; box-shadow: 0 24px 40px rgba(0,0,0,.35); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border-top: 6px solid var(--pink); transition: opacity .4s, transform .3s; }
+.desk b { font-size: 20px; font-weight: 600; } .desk span { font-size: 13px; opacity: .8; }
+.plb .desk:hover { transform: translate3d(470px, 202px, 265px); }
+.world:not([data-wall="back"]) .desk { opacity: 0; pointer-events: none; }
+
+.plb .nav { position: absolute; top: 50%; width: 46px; height: 46px; margin-top: -23px; border-radius: 50%; background: rgba(255,255,255,.14); color: #fff; font-size: 28px; line-height: 1; z-index: 3; backdrop-filter: blur(6px); }
+.plb .nav:hover { background: rgba(255,255,255,.28); } .nav.prev { left: 14px; } .nav.next { right: 14px; }
+.dots { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); display: flex; gap: 8px; z-index: 3; }
+.plb .dot { padding: 6px 14px; border-radius: 999px; background: rgba(13,20,36,.55); color: rgba(255,255,255,.75); font-size: 12px; backdrop-filter: blur(6px); white-space: nowrap; }
+.plb .dot.on { background: #fff; color: var(--ink); font-weight: 600; }
+.hint { position: absolute; left: 50%; top: 10px; transform: translateX(-50%); padding: 4px 14px; border-radius: 999px; background: rgba(13,20,36,.45); color: rgba(255,255,255,.85); font-size: 12px; z-index: 2; pointer-events: none; white-space: nowrap; }
+
+/* 목록 보기 */
+.list { position: absolute; inset: 0; overflow: auto; padding: 8px 18px 28px; }
+.list h3 { color: #fff; font-weight: 600; font-size: 18px; margin: 18px 0 12px; }
+.lgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 16px; }
+.list .card { transform: none; background: #fff; border-radius: 14px; padding: 8px 8px 12px; }
+.list .card:hover { transform: translateY(-3px); } .list .pic { box-shadow: none; border-width: 0; border-radius: 9px; } .list .cap b { font-size: 15px; }
+
+/* 덮개(국가 선택·상세·문의) */
+.veil { position: absolute; inset: 0; z-index: 10; background: rgba(8,12,23,.62); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; padding: 16px; animation: plb-in .25s ease; }
+.veil.side { justify-content: flex-end; padding: 0; }
+@keyframes plb-in { from { opacity: 0; } to { opacity: 1; } }
+.panel { position: relative; width: min(100%, 520px); max-height: 100%; overflow: auto; background: #fff; border-radius: 18px; padding: 28px; box-shadow: 0 30px 80px rgba(0,0,0,.4); }
+.panel h2 { margin: 0 0 6px; font-size: 22px; font-weight: 600; line-height: 1.3; } .panel p { margin: 0 0 14px; color: #4a5266; }
+.panel small { display: block; color: #6b7388; font-size: 12px; line-height: 1.5; }
+.plb .x { position: absolute; right: 10px; top: 8px; width: 38px; height: 38px; border-radius: 50%; font-size: 24px; color: #4a5266; z-index: 2; background: rgba(255,255,255,.85); }
+.gate .panel { text-align: center; padding: 34px 32px; } .glogo { height: 84px; margin-bottom: 10px; }
+.gate select { width: 100%; margin: 4px 0 16px; } .gate .cta { margin-bottom: 16px; }
+.plb select, .plb input:not([type=checkbox]), .plb textarea { width: 100%; padding: 11px 13px; border: 1px solid #cfd5e2; border-radius: 10px; font: inherit; color: var(--ink); background: #fff; }
+.plb textarea { resize: vertical; }
+.prod.panel { width: min(100%, 440px); height: 100%; border-radius: 18px 0 0 18px; padding: 0; animation: plb-slide .3s ease; }
+@keyframes plb-slide { from { transform: translateX(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+.hero { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; } .hero.noimg { color: #fff; }
+.prod .body { padding: 20px 24px 26px; }
+.plb dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; margin: 0 0 16px; font-size: 14px; } .plb dt { color: #6b7388; } .plb dd { margin: 0; }
+.pcheck { border-radius: 12px; padding: 14px 16px; margin-bottom: 18px; border: 1px solid; }
+.pcheck b { display: block; margin-bottom: 4px; } .pcheck p { margin: 0 0 8px; font-size: 14px; color: inherit; } .pcheck .note { font-weight: 500; }
+.pcheck.ok { background: #effaf3; border-color: #b9e6cb; color: #17603a; } .pcheck.cond { background: #fff8e6; border-color: #f2d98c; color: #6b4800; }
+.pcheck.check { background: #f1f4fa; border-color: #cfd7e8; color: #2f3b57; } .pcheck.no { background: #fef0f0; border-color: #f3c1c1; color: #8d1f1f; }
+.pcheck small { color: inherit; opacity: .8; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.panel .ghost { border-color: #c5ccdb; color: var(--ink); } .panel .ghost:hover { background: #f1f4fa; }
+.form label { display: block; margin-bottom: 12px; } .form label > span { display: block; font-size: 13px; font-weight: 500; margin-bottom: 5px; color: #3a4257; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; } .chips span { display: inline-flex; align-items: center; gap: 4px; padding: 4px 6px 4px 12px; border-radius: 999px; background: #f1f4fa; font-size: 13px; }
+.chips button { width: 22px; height: 22px; border-radius: 50%; line-height: 1; color: #6b7388; }
+.form .ck { display: flex; gap: 9px; align-items: flex-start; } .form .ck span { font-weight: 400; margin: 0; } .ck input { margin-top: 4px; }
+.hp { position: absolute !important; left: -9999px; width: 1px !important; height: 1px; opacity: 0; }
+.msg { min-height: 0; margin: 0 0 10px; font-size: 13px; } .msg.bad { color: #b3261e; }
+.done textarea { font-size: 12px; margin-bottom: 14px; }
+
+@media (max-width: 720px) {
+  .top { padding: 0 10px; gap: 6px; } .brand div, .chip small, .chip i, .hint { display: none; } .brand img { height: 34px; } .tools { gap: 5px; }
+  .plb .ghost { padding: 7px 10px; font-size: 12px; } .plb .cta { padding: 8px 12px; font-size: 13px; } .chip { padding: 6px 10px; font-size: 12px; }
+  .two { grid-template-columns: 1fr; } .panel { padding: 22px 18px; } .prod.panel { width: 100%; border-radius: 0; } .dot span { display: none; } .plb .dot { width: 10px; height: 10px; padding: 0; }
+  .lgrid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+@media (prefers-reduced-motion: reduce) { .world, .plb .card, .veil, .prod.panel { transition: none; animation: none; } }
