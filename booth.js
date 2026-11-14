@@ -28,9 +28,9 @@
       sent_title: 'Thank you.', sent_body: 'Your inquiry has been received. We will reply to {e} shortly.',
       mail_title: 'One more step', mail_body: 'Your email program has been opened with the inquiry filled in. Please press send. If nothing opened, copy the text below and email it to {m}.',
       copy: 'Copy text', copied: 'Copied', err: 'Sending failed. Please email us at {m}.', req: 'Please fill in name, company and a valid email, and tick the consent box.',
-      fl_all: 'Whole booth', fl_1: '1F · Products', fl_2: '2F · Lounge', sp_tasting: 'Request samples', sp_lounge: '2F Lounge', loading3d: 'Opening the booth…',
+      fl_all: 'Whole booth', fl_1: '1F · Products', fl_2: '2F · Lounge', zoom_in: 'Zoom in', zoom_out: 'Zoom out', b_ok: 'OK', b_cond: 'Conditions', b_check: 'To confirm', b_no: 'Not now', sp_tasting: 'Request samples', sp_lounge: '2F Lounge', loading3d: 'Opening the booth…',
       quest: 'YOUR VISIT', q_country: 'Choose your import country', q_view: 'Look at 3 products ({n}/3)', q_ask: 'Request samples or send an inquiry',
-      staff: 'Mina · Booth staff', talk: 'Welcome! Tap a counter to see what we can ship to {c}. Each product shows a preliminary import check.', talk0: 'Welcome to the Pink Lagoon booth!',
+      staff: 'Mina · Booth staff', talk: 'Welcome! Drag to look around and tap a photo on the wall. Each product shows a preliminary import check for {c}.', talk0: 'Welcome to the Pink Lagoon booth!',
       zone_sub: 'Preliminary import check for {c} is shown on each product.', sample_title: 'Request samples', sample_msg: 'Sample request: ',
       desk: 'Inquiry Desk', close: 'Close', tagline: 'Premium Seafood from Korea', prev: 'Previous wall', next: 'Next wall'
     },
@@ -52,9 +52,9 @@
       sent_title: '감사합니다.', sent_body: '문의가 접수되었습니다. {e} 주소로 곧 회신드리겠습니다.',
       mail_title: '한 단계 남았습니다', mail_body: '문의 내용이 채워진 메일 창을 열었습니다. 보내기를 눌러 주세요. 창이 열리지 않았다면 아래 내용을 복사해 {m} 주소로 보내 주세요.',
       copy: '내용 복사', copied: '복사됨', err: '전송에 실패했습니다. {m} 주소로 메일 주세요.', req: '이름, 회사명, 올바른 이메일을 입력하고 동의란에 체크해 주세요.',
-      fl_all: '부스 전체', fl_1: '1층 · 제품', fl_2: '2층 · 라운지', sp_tasting: '샘플 요청', sp_lounge: '2층 라운지', loading3d: '부스를 여는 중…',
+      fl_all: '부스 전체', fl_1: '1층 · 제품', fl_2: '2층 · 라운지', zoom_in: '확대', zoom_out: '축소', b_ok: '가능', b_cond: '조건부', b_check: '확인 필요', b_no: '현재 불가', sp_tasting: '샘플 요청', sp_lounge: '2층 라운지', loading3d: '부스를 여는 중…',
       quest: '방문 안내', q_country: '수입 국가 고르기', q_view: '제품 3개 살펴보기 ({n}/3)', q_ask: '샘플 요청 또는 문의 남기기',
-      staff: 'Mina · 부스 직원', talk: '어서 오세요! 진열대를 누르면 {c} 기준으로 보낼 수 있는 제품을 보여드려요. 제품마다 1차 수입 가능 여부가 표시됩니다.', talk0: '핑크라군 부스에 오신 것을 환영합니다!',
+      staff: 'Mina · 부스 직원', talk: '어서 오세요! 끌어서 둘러보고 벽의 사진을 눌러 보세요. 제품마다 {c} 기준 1차 수입 가능 여부가 표시됩니다.', talk0: '핑크라군 부스에 오신 것을 환영합니다!',
       zone_sub: '제품마다 {c} 기준 1차 수입 가능 여부가 표시됩니다.', sample_title: '샘플 요청', sample_msg: '샘플 요청: ',
       desk: '문의 데스크', close: '닫기', tagline: 'Premium Seafood from Korea', prev: '이전 벽', next: '다음 벽'
     }
@@ -98,13 +98,10 @@
     }).catch(function (e) { app.textContent = 'Booth failed to load: ' + e.message; });
 
     /* ───────── 그리기 ───────── */
-    // 부스 보기는 3D 장면(3d/scene.js, Three.js)이다. 장면은 한 번만 만들고, 화면을 다시 그릴 때는 같은 캔버스를 다시 붙인다.
-    // 3D를 못 쓰는 기기(WebGL 없음, 불러오기 실패)는 목록 보기로 넘어간다.
+    // 부스 보기는 3D 장면(3d/scene.js, Three.js)이다: 전시장 안의 부스, 세 벽에 제품 사진 패널.
+    // 장면은 한 번만 만들고, 화면을 다시 그릴 때는 같은 캔버스를 다시 붙인다. 3D를 못 쓰는 기기는 목록 보기로 넘어간다.
     var three = null;
-    var SPOTS = [
-      { id: 'shellfish', zone: 'shellfish', at: [-4, 2.35, 1.7], view: 'f1' }, { id: 'crabfish', zone: 'crabfish', at: [0, 2.55, 1.6], view: 'f1' }, { id: 'seaweed', zone: 'seaweed', at: [4, 2.9, 1.6], view: 'f1' },
-      { id: 'desk', at: [-5.6, 2.75, 5.4], label: 'desk' }, { id: 'tasting', at: [4.0, 1.75, 6.2], label: 'sp_tasting' }, { id: 'lounge', at: [0, 6.05, 0.3], label: 'sp_lounge', view: 'f2' }
-    ];
+    var SPOTS = [{ id: 'desk', key: 'desk', label: 'desk' }, { id: 'tasting', key: 'tasting', label: 'sp_tasting' }, { id: 'lounge', key: 'lounge', label: 'sp_lounge' }];
     function render() {
       app.innerHTML = ''; app.lang = S.lang; app.classList.toggle('is3d', S.view === 'booth');
       app.appendChild(topbar());
@@ -114,8 +111,17 @@
     }
     function zoneOf(id) { var z = S.data.zones.filter(function (z) { return z.id === id; })[0]; return z ? L(z) : ''; }
     function no3d() { S.no3d = true; S.view = 'list'; three = null; render(); }
+    function panelData() {                                              // 벽마다 걸 사진 패널: 제품 이름, 사진 주소, 1차 판정 배지
+      return S.data.zones.map(function (z) {
+        return { wall: z.wall, title: L(z), items: S.data.products.filter(function (p) { return p.zone === z.id; }).map(function (p) {
+          var v = verdict(p.id), has = p.photo || (opts.photos && opts.photos[p.id]);
+          return { id: p.id, title: L(p), photo: has ? photo(p.id) : null, note: t('photo_soon'), badge: S.country ? v.v : null, badgeText: S.country ? t('b_' + v.v) : '', tag: p.sourcing ? t('sourcing') : '' };
+        }) };
+      });
+    }
+    function syncPanels() { if (!three || !three.api) return; var sig = S.lang + '|' + (S.country ? S.country.code : ''); if (three.sig === sig) return; three.sig = sig; three.api.setPanels(panelData()); }
     function stage3d() {
-      if (three) { if (three.api) three.api.resize(); return three.el; }
+      if (three) { if (three.api) { three.api.resize(); syncPanels(); } return three.el; }
       var canvas = h('canvas', { class: 'gl' }), el = h('div', { class: 'three' }, [canvas, h('div', { class: 'loading', text: t('loading3d') })]);
       three = { el: el, api: null, view: 'all' };
       var probe = document.createElement('canvas'), ok = false; try { ok = !!(probe.getContext('webgl2') || probe.getContext('webgl')); } catch (e) {}
@@ -124,9 +130,9 @@
       import(base + '3d/scene.js').then(function (m) {
         return (document.fonts && document.fonts.load ? document.fonts.load("600 40px 'PLB Poppins'") : Promise.resolve()).catch(function () {}).then(function () {
           if (three !== mine) return;
-          mine.api = m.createBooth(canvas, { font: "'PLB Poppins'" }); el.classList.add('ready');
-          if (window.ResizeObserver) new ResizeObserver(function () { mine.api.resize(); }).observe(el);
-          mine.api.onFrame = place; mine.api.goto(mine.view, true);
+          mine.api = m.createBooth(canvas, { font: "'PLB Poppins'", capture: !!opts.capture });
+          mine.api.onFrame = place; mine.api.onPick = function (id) { var p = S.data.products.filter(function (x) { return x.id === id; })[0]; if (p) openProduct(p); };
+          mine.api.goto(mine.view, true); syncPanels(); el.classList.add('ready');
         });
       }).catch(function () { if (three === mine) no3d(); });
       return el;
@@ -135,30 +141,26 @@
     function place() {                                                  // 3D 위치를 화면 좌표로 바꿔 단추를 그 자리에 둔다
       if (!three || !three.api) return;
       [].forEach.call(app.querySelectorAll('.spot'), function (b) {
-        var a = b._at, q = three.api.project(a[0], a[1], a[2]);
+        var a = three.api.spots[b._key]; if (!a) return; var q = three.api.project(a[0], a[1], a[2]);
         b.style.transform = 'translate(' + q.x.toFixed(1) + 'px,' + q.y.toFixed(1) + 'px) translate(-50%,-100%)'; b.style.opacity = q.visible ? 1 : 0; b.style.pointerEvents = q.visible ? '' : 'none';
       });
     }
     function hud() {
       var spots = SPOTS.map(function (sp) {
-        var b = h('button', { class: 'spot' + (sp.zone ? '' : ' act') }, [h('i'), h('span', { text: sp.zone ? zoneOf(sp.zone) : t(sp.label) })]); b._at = sp.at;
-        b.addEventListener('click', function () {
-          if (sp.zone) { goView(sp.view); openZone(sp.zone); } else if (sp.id === 'lounge') goView('f2'); else if (sp.id === 'tasting') openForm('sample'); else openForm();
-        });
+        var b = h('button', { class: 'spot act' }, [h('i'), h('span', { text: t(sp.label) })]); b._key = sp.key;
+        b.addEventListener('click', function () { if (sp.id === 'lounge') goView('f2'); else if (sp.id === 'tasting') openForm('sample'); else openForm(); });
         return b;
       });
       var seen = Object.keys(S.viewed || {}).length, q3 = S.sent || S.cart.length > 0, donePct = ((S.country ? 1 : 0) + Math.min(seen, 3) / 3 + (q3 ? 1 : 0)) / 3 * 100;
       var q = function (ok, text) { return h('p', { class: ok ? 'ok' : '' }, [h('i', { text: ok ? '✓' : '' }), text]); };
-      return h('div', { class: 'hud', 'data-view': (three && three.view) || 'all' }, [
+      var cur = (three && three.view) || 'all', views = [['all', t('fl_all')]].concat(S.data.zones.map(function (z) { return [z.wall, L(z)]; })).concat([['f2', t('fl_2')]]);
+      return h('div', { class: 'hud', 'data-view': cur }, [
         h('div', { class: 'spots' }, spots),
-        h('div', { class: 'floors' }, [['all', 'fl_all'], ['f1', 'fl_1'], ['f2', 'fl_2']].map(function (f) { return h('button', { class: 'pcard' + ((three && three.view) === f[0] ? ' on' : ''), 'data-v': f[0], onclick: function () { goView(f[0]); }, text: t(f[1]) }); })),
+        h('div', { class: 'floors' }, views.map(function (f) { return h('button', { class: 'pcard' + (cur === f[0] ? ' on' : ''), 'data-v': f[0], onclick: function () { goView(f[0]); }, text: f[1] }); })),
+        h('div', { class: 'zoom' }, [h('button', { class: 'pcard', 'aria-label': t('zoom_in'), onclick: function () { if (three && three.api) three.api.zoom(1); }, text: '+' }), h('button', { class: 'pcard', 'aria-label': t('zoom_out'), onclick: function () { if (three && three.api) three.api.zoom(-1); }, text: '−' })]),
         h('div', { class: 'pcard quest' }, [h('h4', { text: t('quest') }), q(!!S.country, t('q_country') + (S.country ? ' (' + cName() + ')' : '')), q(seen >= 3, t('q_view', { n: Math.min(seen, 3) })), q(q3, t('q_ask')), h('div', { class: 'pg' }, [h('i', { style: 'width:' + donePct.toFixed(0) + '%' })])]),
         h('div', { class: 'pcard talk' }, [h('div', { class: 'face' }), h('div', {}, [h('b', { text: t('staff') }), h('p', { text: S.country ? t('talk', { c: cName() }) : t('talk0') })])])
       ]);
-    }
-    function openZone(zid) {
-      var ps = S.data.products.filter(function (p) { return p.zone === zid; });
-      veil(h('div', { class: 'panel zonep' }, [h('h2', { text: zoneOf(zid) }), S.country ? h('p', { text: t('zone_sub', { c: cName() }) }) : null, h('div', { class: 'lgrid' }, ps.map(card))]), 'side');
     }
 
     function topbar() {

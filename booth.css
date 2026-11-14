@@ -42,6 +42,8 @@
 @keyframes plb-ping { from { transform: scale(1); opacity: .9; } to { transform: scale(2.2); opacity: 0; } }
 .floors { position: absolute; left: 16px; top: 76px; display: flex; gap: 8px; }
 .plb .floors button { padding: 7px 14px; font-size: 13px; font-weight: 600; background: linear-gradient(#fff9e8, #f3e3bf); color: #4a3528; } .plb .floors button.on { background: #e56fab; color: #fff; }
+.floors { flex-wrap: wrap; max-width: calc(100% - 300px); }
+.zoom { position: absolute; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 6px; } .plb .zoom button { width: 40px; height: 40px; padding: 0; font-size: 22px; line-height: 1; font-weight: 600; background: linear-gradient(#fff9e8, #f3e3bf); color: #4a3528; border-radius: 12px; }
 .quest { position: absolute; right: 16px; top: 76px; width: 250px; padding: 12px 14px; }
 .quest h4 { margin: 0 0 6px; font-size: 12px; letter-spacing: .08em; color: #d85a2a; }
 .quest p { margin: 0 0 4px; font-size: 13px; display: flex; gap: 7px; align-items: center; color: #4a3528; } .quest p.ok { color: #2f7d54; }
@@ -49,6 +51,7 @@
 .quest .pg { height: 7px; border-radius: 4px; background: #e8d2a6; margin-top: 8px; overflow: hidden; } .quest .pg i { display: block; height: 100%; background: #e56fab; transition: width .4s; }
 .talk { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); width: min(820px, calc(100% - 28px)); display: flex; gap: 14px; align-items: center; padding: 11px 16px; }
 .face { flex: none; width: 54px; height: 54px; border-radius: 50%; border: 3px solid #5a4334; background: #cfe6f2 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M14 64q0-20 18-20t18 20z' fill='%23f08fb7'/%3E%3Ccircle cx='32' cy='30' r='15' fill='%23f6d3b3'/%3E%3Cpath d='M16 26q2-16 16-16t16 16q-8-8-16-8t-16 8z' fill='%23e56fab'/%3E%3Ccircle cx='26' cy='31' r='2.2' fill='%233a2a22'/%3E%3Ccircle cx='38' cy='31' r='2.2' fill='%233a2a22'/%3E%3Cpath d='M28 37q4 3 8 0' fill='none' stroke='%235a4334' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") center/cover; }
+.hud .spots { transition: opacity .3s; } .hud[data-view="left"] .spots, .hud[data-view="back"] .spots, .hud[data-view="right"] .spots { opacity: 0; pointer-events: none; } .hud[data-view="left"] .spot, .hud[data-view="back"] .spot, .hud[data-view="right"] .spot { pointer-events: none !important; }   /* 벽을 볼 때는 사진을 가리지 않게 단추를 숨긴다 */
 .hud .talk { transition: opacity .3s; } .hud:not([data-view="all"]) .talk { opacity: 0; pointer-events: none; }   /* 가까이 볼 때는 안내 카드를 치워 아래쪽 단추를 가리지 않는다 */
 .talk b { display: block; font-size: 12px; color: #d85a2a; } .talk p { margin: 0; font-size: 14.5px; line-height: 1.45; color: #4a3528; }
 .zonep.panel { width: min(100%, 520px); height: 100%; border-radius: 18px 0 0 18px; animation: plb-slide .3s ease; }
@@ -111,7 +114,7 @@
 .done textarea { font-size: 12px; margin-bottom: 14px; }
 
 @media (max-width: 720px) {
-  .quest { display: none; } .floors { top: 66px; left: 10px; } .plb .floors button { padding: 6px 10px; font-size: 12px; } .plb .spot { font-size: 11.5px; padding: 5px 10px 5px 6px; } .plb .spot i { width: 16px; height: 16px; } .plb .spot span { max-width: 88px; overflow: hidden; text-overflow: ellipsis; } .talk p { font-size: 12.5px; } .face { width: 40px; height: 40px; } .zonep.panel { width: 100%; border-radius: 0; }
+  .quest { display: none; } .floors { top: 66px; left: 10px; max-width: calc(100% - 20px); gap: 6px; } .zoom { right: 10px; bottom: 96px; } .plb .floors button { padding: 6px 10px; font-size: 12px; } .plb .spot { font-size: 11.5px; padding: 5px 10px 5px 6px; } .plb .spot i { width: 16px; height: 16px; } .plb .spot span { max-width: 88px; overflow: hidden; text-overflow: ellipsis; } .talk p { font-size: 12.5px; } .face { width: 40px; height: 40px; } .zonep.panel { width: 100%; border-radius: 0; }
   .top { padding: 0 10px; gap: 6px; } .brand div, .chip small, .chip i, .hint { display: none; } .brand img { height: 34px; } .tools { gap: 5px; }
   .plb .ghost { padding: 7px 10px; font-size: 12px; } .plb .cta { padding: 8px 12px; font-size: 13px; } .chip { padding: 6px 10px; font-size: 12px; }
   .two { grid-template-columns: 1fr; } .panel { padding: 22px 18px; } .prod.panel { width: 100%; border-radius: 0; } .dot span { display: none; } .plb .dot { width: 10px; height: 10px; padding: 0; }

@@ -12,7 +12,7 @@
 <script src="booth.js" data-mount="manual"></script>
 <script>
   var q = new URLSearchParams(location.search);
-  PinkLagoonBooth.mount(document.getElementById('pink-lagoon-booth'), { base: './', lang: q.get('lang') || 'en', endpoint: q.get('endpoint') || '', noAutoMail: q.get('noAutoMail') === '1' });
+  PinkLagoonBooth.mount(document.getElementById('pink-lagoon-booth'), { base: './', lang: q.get('lang') || 'en', endpoint: q.get('endpoint') || '', noAutoMail: q.get('noAutoMail') === '1', capture: q.get('capture') === '1' });
 </script>
 </body>
 </html>
